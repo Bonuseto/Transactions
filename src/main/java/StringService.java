@@ -1,6 +1,7 @@
 public class StringService {
 
-    public static String padLeftZeros(String inputString, int length) {
+    //adding 0 to count if needed
+    public static String padLeftZeros(String inputString, double length) {
         if (inputString.length() >= length) {
             return inputString;
         }
@@ -13,16 +14,16 @@ public class StringService {
         return sb.toString();
     }
 
-    public static String cleanIt(String string) {
-        String withWhiteSpaces = string;
-        String wihtQuotes = withWhiteSpaces.trim();
-        return wihtQuotes;
+    //cleaning String from double quotes and whitespaces
+    public static String clean(String string) {
+        String withWhiteSpaces = string.replaceAll("\"", "");
+        return withWhiteSpaces.trim();
     }
 
-    public static String reverseIt(String string) {
+    //reversing String
+    public static String reverse(String string) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(string);
-        string = String.valueOf(stringBuilder.reverse());
-        return string;
+        return String.valueOf(stringBuilder.reverse());
     }
 }
