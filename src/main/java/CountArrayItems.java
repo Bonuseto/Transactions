@@ -1,4 +1,8 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Collections;
 
 public class CountArrayItems {
 
@@ -21,7 +25,7 @@ public class CountArrayItems {
             //adding needed amount of zeros to our counter and assigning them to item in transactionsArrayList
             int tranAmount = Collections.frequency(providersArrayList, transactionsArrayList.get(j).getProvider());
             double digitsNumber = Math.floor(Math.log10(tranAmount)) + 1;
-            String count = StringService.padLeftZeros(String.valueOf(result.get(provider)), digitsNumber);
+            String count = StringUtils.padLeftZeros(String.valueOf(result.get(provider)), digitsNumber);
             transactionsArrayList.get(j).setCount(count);
             j++;
         }

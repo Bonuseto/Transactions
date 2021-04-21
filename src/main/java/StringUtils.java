@@ -1,4 +1,4 @@
-public class StringService {
+public class StringUtils {
 
     //adding 0 to count if needed
     public static String padLeftZeros(String inputString, double length) {
