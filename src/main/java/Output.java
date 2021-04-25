@@ -1,14 +1,16 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public class Output {
 
-    static void print(ArrayList<Transaction> transactionsArrayList) {
+    public String print(List<Transaction> transactionsArrayList) {
+
+        StringBuilder sb = new StringBuilder();
 
         for (Transaction element : transactionsArrayList) {
-            //System.out.println(element.getProvider() + "|" + element.getCount() + "|" + element.getNote() + "|" + element.getDate() + "|" + element.getId());
-            System.out.println(element.getProvider() + "|" + element.getCount() + "|" + element.getNote());
+            sb.append(element.getProvider()).append("|").append(element.getCount()).append("|").append(element.getNote()).append("\n");
         }
 
+        return sb.toString();
     }
 
 }

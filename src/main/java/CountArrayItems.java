@@ -1,19 +1,19 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Collections;
+import java.util.*;
 
 public class CountArrayItems {
 
-    public static ArrayList<Transaction> countItems(ArrayList<Transaction> transactionsArrayList, ArrayList<String> providersArrayList) {
+    StringUtils stringUtils = new StringUtils();
+
+    public List<Transaction> countItems(List<Transaction> transactionsArrayList, List<String> providersArrayList) {
 
         transactionsArrayList.sort(Comparator.comparingLong(o -> o.getDate().getTime()));//sorting array by time
 
         Map<String, Integer> result = new HashMap<>();
+
         int j = 0;
         for (Transaction s : transactionsArrayList) {
             String provider = s.getProvider();
+
             if (result.containsKey(provider)) {
                 //if the map contain this key then just increment your count
                 result.put(provider, result.get(provider) + 1);
@@ -23,9 +23,9 @@ public class CountArrayItems {
             }
 
             //adding needed amount of zeros to our counter and assigning them to item in transactionsArrayList
-            int tranAmount = Collections.frequency(providersArrayList, transactionsArrayList.get(j).getProvider());
+            int tranAmount = Collections.frequency(providersArrayList, provider);
             double digitsNumber = Math.floor(Math.log10(tranAmount)) + 1;
-            String count = StringUtils.padLeftZeros(String.valueOf(result.get(provider)), digitsNumber);
+            String count = stringUtils.padLeftZeros(String.valueOf(result.get(provider)), digitsNumber);
             transactionsArrayList.get(j).setCount(count);
             j++;
         }
